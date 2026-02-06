@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktViewHolder> {
     private ArrayList<Produkt> listaZakupow;
     private LayoutInflater inflater;
+    private Button przycisk;
 
     public ZakupyAdapter(Context context, ArrayList<Produkt> listaZakupow) {
         this.listaZakupow = listaZakupow;
@@ -39,11 +41,22 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
     public int getItemCount() {
         return listaZakupow.size();
     }
+    public void dodjProdukt(Produkt produkt){
+        listaZakupow.add(produkt);
+        notifyDataSetChanged();
+    }
+
+    public void usunZaznaczone() {
+        listaZakupow.removeIf(x -> x.isKupione());
+        notifyDataSetChanged();
+    }
 
 
     public class ProduktViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
         CheckBox checkBoxProdukt;
         ZakupyAdapter zakupyAdapter;
+        Button przycisk;
+
 
         public ProduktViewHolder(@NonNull View itemView, ZakupyAdapter adapter) {
             super(itemView);
@@ -57,5 +70,6 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
             int indeksProduktu = getLayoutPosition();
             listaZakupow.get(indeksProduktu).setKupione(b);
         }
+
     }
 }
