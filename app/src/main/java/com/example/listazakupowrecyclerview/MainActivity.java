@@ -34,9 +34,16 @@ public class MainActivity extends AppCompatActivity {
         listaZakopowArrayList.add(new Produkt("cukier"));
         listaZakopowArrayList.add(new Produkt("cynamon"));
         listaZakopowArrayList.add(new Produkt("drożdże"));
-
+        listaZakopowArrayList.add(new Produkt("drożdże"));
+        listaZakopowArrayList.add(new Produkt("drożdże"));
+        listaZakopowArrayList.add(new Produkt("drożdże"));
+        listaZakopowArrayList.add(new Produkt("drożdże"));
+        listaZakopowArrayList.add(new Produkt("drożdże"));
+        listaZakopowArrayList.add(new Produkt("drożdże"));
         zakupyAdapter = new ZakupyAdapter(MainActivity.this , listaZakopowArrayList);
         recyclerView.setAdapter(zakupyAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+
     }
 }
